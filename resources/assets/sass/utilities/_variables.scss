@@ -1,0 +1,147 @@
+///////////////////////////////////////////
+// ------------ Variables -------------- //
+///////////////////////////////////////////
+
+// Colors
+$black: #0A0A0A !default;
+$black-hover: rgba(10, 10, 10, 0.6) !default;
+
+$blue-dark: #445C7B !default;
+
+$blue-dark-light: #d9dee4 !default;
+
+$blue-royal-dark: #226582 !default;
+
+$blue-royal: #2A7EA3 !default;
+
+$blue-royal-light: #d4e5ec !default;
+
+$blue: #82AAFF !default;
+$blue-hover: rgba(130, 170, 255, 0.6) !default;
+
+$blue-light: #4D678A !default;
+
+$brown: #AB7967 !default;
+$brown-hover: rgba(171, 121, 103, 0.6) !default;
+
+$charcoal-dark: #1b1b1b !default;
+
+$charcoal: #222222 !default;
+
+$charcoal-light: #383838 !default;
+
+$cyan: #7bc6e5 !default;
+$cyan-hover: rgba(137, 221, 255, 0.6) !default;
+
+$gray-copy: #5B5B5B !default;
+
+$gray: #5B5B5B !default;
+$gray-hover: rgba(128, 128, 128, 0.6) !default;
+
+$gray-light: #808080 !default;
+
+$gray-lighter: #E8EAED !default;
+
+$gray-lightest: #F5F5F5 !default;
+
+$green-dark: #399363 !default;
+
+$green: #40A46E !default;
+$green-hover: rgba(64, 164, 110, 0.6) !default;
+
+$green-light: #EAF6EE !default;
+
+$green-lighter: #b2dac5 !default;
+
+$green-lightest: #ebf5f0 !default;
+
+$navy-dark: #35444B !default;
+
+$navy: #3B4C54 !default;
+$navy-hover: rgba(59, 76, 84, 0.6) !default;
+
+$navy-light: #4e5d65 !default;
+
+$navy-lighter: #5F6D74 !default;
+
+$orange: #FFCB6B !default;
+$orange-hover: rgba(247, 140, 108, 0.6) !default;
+
+$orange-light: #fff0d5 !default;
+
+$orange-dark: #e5b660 !default;
+
+$pink: #F07178 !default;
+$pink-hover: rgba(240, 113, 120, 0.6) !default;
+
+$purple: #7768ae !default;
+$purple-hover: rgba(199, 146, 234, 0.6) !default;
+
+$purple-light: #e3e0ee !default;
+
+$red-dark: #c34a47 !default;
+
+$red: #e15554 !default;
+$red-hover: rgba(255, 83, 112, 0.6) !default;
+
+$red-light: #f9dddc !default;
+
+$teal: #4DB6AC !default;
+$teal-hover: rgba(77, 182, 172, 0.6) !default;
+
+$teal-light: #dbf0ee !default;
+
+$violet: #BB80B3 !default;
+$violet-hover: rgba(187, 128, 179, 0.6) !default;
+
+$white: #FFF !default;
+$white-hover: rgba(255, 255, 255, 0.6) !default;
+
+$yellow-dark: #e5b660 !default;
+
+$yellow: #ffe066 !default;
+$yellow-hover: rgba(255, 203, 107, 0.6) !default;
+
+$yellow-light: #FFD588 !default;
+
+$transparent: transparent !default;
+
+$colors-list: #40A46E #FFCB6B #2A7EA3 #4DB6AC #7768ae #e15554 #445C7B;
+
+$danger: $red;
+$success: $green;
+$warning: $orange;
+
+$brand-primary: $cyan !default;
+$brand-secondary: $gray !default;
+$brand-tertiary: $navy !default;
+
+//Typogrophy
+$family-headings: "Open Sans", Helvetica, Arial, sans-serif !default;
+$family-copy: "Open Sans", Helvetica, Arial, sans-serif !default;
+$family-code: "Inconsolata", Arial, sans-serif, !default;
+$family-icons: "FontAwesome";
+
+$size-1: 48px !default;
+$size-2: 40px !default;
+$size-3: 32px !default;
+$size-4: 28px !default;
+$size-5: 24px !default;
+$size-6: 20px !default;
+$size-7: 16px !default;
+$size-8: 14px !default;
+$size-9: 12px !default;
+
+$text: 14px !default;
+
+$marketing: 64px !default;
+
+$weight-normal: 400;
+$weight-bold: 700;
+$weight-strong: 600;
+$weight-thin: 100;
+
+//Breakpoints
+$medium: 768px !default;
+$large: 992px !default;
+$wide: 1200px !default;

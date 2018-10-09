@@ -1,0 +1,101 @@
+/*/////////////////////////////////////////
+// -------------- Tables --------------- //
+/////////////////////////////////////////*/
+
+.table-container {
+	overflow-x: auto;
+}
+
+.table {
+	background-color: $white;
+	color: $gray;
+	margin-bottom: 20px;
+	width: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	@include medium {
+		table-layout: fixed;
+	}
+	th,
+	td {
+		border: 1px solid $gray-lighter;
+		border-width: 0 0 1px;
+		padding: 12px 20px;
+		vertical-align: center;
+		text-align: left;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	th {
+		font-weight: $weight-bold;
+		&:first-child {
+			padding-left: 20px;
+		}
+		&:last-child {
+			padding-right: 20px;
+		}
+		&:hover {
+			cursor: pointer;
+		}
+		i {
+			margin-left: 10px;
+		}
+	}
+	td {
+		&:first-child {
+			padding-left: 20px;
+		}
+		&:last-child {
+			padding-right: 20px;
+		}
+	}
+	tr {
+		&:hover {
+			background-color: $gray-lightest;
+			cursor: pointer;
+		}
+	}
+	thead {
+		tr {
+			th {
+				border-width: 0 0 2px;
+				&:first-child {
+					border-left: 6px solid $white;
+				}
+			}
+			&:hover {
+				background-color: transparent;
+				cursor: default;
+			}
+		}
+	}
+	&#jobs-table {
+		tbody {
+			tr {
+				td {
+					&:first-child {
+						border-left-width: 6px;
+						border-left-style: solid;
+						&.red {
+							border-left-color: $red;
+						}
+						&.yellow {
+							border-left-color: $orange;
+						}
+						&.yellow {
+							border-left-color: $yellow;
+						}
+						&.green {
+							border-left-color: $green;
+						}
+						&.gray {
+							border-left-color: $gray-light;
+						}
+					}
+				}
+			}
+		}
+	}
+}
