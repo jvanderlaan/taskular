@@ -1,5 +1,27 @@
 @extends ('layouts/master')
 
+@section('title')
+
+	<title>Create Job | Employee Portal</title>
+
+@endsection
+
+@section('messages')
+
+	@if ($flash = session ('message'))
+		<div class="notification flash success">
+			<span class="tag success">SUCCESS</span>
+			<span class="message">		
+				{{ $flash }}
+			</span>
+			<a class="dismiss-notification" href="#"><i class="material-icons">clear</i></a>
+		</div>
+	@endif
+
+	@include('shards/errors')
+
+@endsection
+
 @section('content')
 
 	<div class="row wrappable page-heading">
@@ -20,8 +42,6 @@
 	<div class="row">
 		<div class="col small-12 medium-12 large-10 offset-large-1 wide-6 offset-wide-3">
 
-			@include('shards/errors')
-
 			<div class="row wrappable">
 				<div class="col small-12">
 					<div class="card">
@@ -40,9 +60,7 @@
 									<div class="col small-12 medium-4">
 										<div>
 											<span class="form-group-title">Identity</span>
-											<span class="form-helper">Job number must be four digits.</span>
-											<br><br><br><br><br><br><br>
-											<span class="form-helper">Automatically link to a Trello card by using the cards title in the description field.</span>
+											<span class="form-helper">You can automatically link the job to a Trello card by entering the cards title in the description field.</span>
 										</div>
 									</div>
 									<div class="col small-12 medium-8">
@@ -63,9 +81,9 @@
 											<span class="form-select">
 												<select name="job-type" required>
 													<option value="0" selected="true" disabled="disabled">Choose an option...</option>
-													<option value="Prediction">Prediction Survey</option>
-													<option value="Survey">Site Survey</option>
-													<option value="Validation">Validation Survey</option>
+													<option value="Prediction Survey">Prediction Survey</option>
+													<option value="Site Survey">Site Survey</option>
+													<option value="Validation Survey">Validation Survey</option>
 													<option value="Combination">Combination</option>
 													<option value="Troubleshoot">Troubleshoot</option>
 													<option value="Other">Other</option>
@@ -79,7 +97,7 @@
 									<div class="col small-12 medium-4">
 										<div>
 											<span class="form-group-title">Status</span>
-											<span class="form-helper">State definitions can be reviewed here.</span>
+											<span class="form-helper">If the job does not belong to anyone yet, assign it to yourself for the time being.</span>
 										</div>
 									</div>
 									<div class="col small-12 medium-8">
@@ -91,7 +109,9 @@
 													<option value="Quoting">Quoting</option>
 													<option value="Planning">Planning</option>
 													<option value="In Progress">In Progress</option>
-													<option value="Billing">Billing</option>
+													<option value="Delivered">Delivered</option>
+													<option value="Approved">Approved</option>
+													<option value="Billed">Billed</option>
 												</select>
 											</span>
 										</div>
@@ -100,12 +120,15 @@
 											<span class="form-select">
 												<select name="assigned-to" required>
 													<option value="0" selected="true" disabled="disabled">Choose an option...</option>
-													<option value="John Doe">John Doe</option>
-													<option value="Jane Doe">Jane Doe</option>
-													<option value="Cheese Face">Cheese Face</option>
-													<option value="Pizza Head">Pizza Head</option>
+													@foreach ($users as $user)
+														<option value="{{ $user->name }}">{{ $user->name }}</option>
+													@endforeach
 												</select>
 											</span>
+										</div>
+										<div class="form-item">
+											<label class="form-label">Purchase Order</label>
+											<input class="form-input" type="text" placeholder="e.g. Awaiting or a PO number" name="purchase-order" required>
 										</div>
 									</div>
 								</div>
@@ -128,7 +151,7 @@
 							<div class="card-footer margin-top-30">
 								<div class="card-footer-item">
 									<div class="flex-row flex-end">
-										<button class="button-secondary button-small button-outlined">Cancel</button>
+										<a class="button-secondary button-small button-outlined" href="{{ URL::previous() }}">Cancel</a>
 										<button class="button-primary button-small" type="submit" name="submit">Submit</button>
 									</div>
 								</div>

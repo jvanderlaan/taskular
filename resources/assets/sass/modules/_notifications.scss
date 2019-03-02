@@ -3,15 +3,39 @@
 /////////////////////////////////////////*/
 
 .notification {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	z-index: 10000;
 	display: flex;
 	align-items: center;
 	font-size: $size-8;
 	padding: 10px;
-	&:not(:last-child) {
-		margin-bottom: 20px;
+	border-radius: 2px;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+	&.flash {
+		animation: notification 10s forwards;
+		@keyframes notification {
+			0%   {opacity: 1;}
+			100% {opacity: 0; z-index: -1;}
+		}
+	}
+	.tag {
+		position: absolute;
+		font-size: $size-10;
+		top: -12px;
+		left: 0;
+		padding: 2px;
+		border-radius: 2px;
+		&.error {
+			background-color: $red;
+		}
+		&.success {
+			background-color: $teal;
+		}
 	}
 	&.success {
-		background-color: $green;
+		background-color: $teal;
 		color: $white;
 	}
 	&.neutral {
@@ -26,16 +50,21 @@
 
 .message {
 	display: flex;
+	flex-direction: column;
 	justify-content: flex-start;
 	align-items: stretch;
 	flex-basis: 0;
 	flex-grow: 1;
 	flex-shrink: 0;
+	margin-right: 10px;
 }
 
 .dismiss-notification {
 	text-decoration: none;
 	color: inherit;
+	&:hover {
+		color: $white-hover;
+	}
 	i {
 		display: block;
 	}

@@ -1,0 +1,45 @@
+@media print {
+	body {
+		font-family: Open Sans, Roboto, sans-serif;
+		color: #5B5B5B;
+	}
+	h3 {
+		font-weight: bold;
+	}
+	a {
+		color: #5B5B5B;
+	}
+	.row {
+		display: block;
+	}
+
+	.col {
+		width: 100%;
+		overflow: visible;
+		height: auto;
+	}
+
+	.form-group-title {
+		font-weight: bold;
+		font-size: 20px;
+	}
+	.form-helper {
+		display: none;
+	}
+	.form-label {
+		font-size: 10px;
+	}
+	.filled {
+		width: 100%;
+		padding: 8px;
+		background-color: #F5F5F5;
+		border-radius: 2px;
+		border-left: 2px solid #E8EAED;
+		-webkit-print-color-adjust: exact;
+		color-adjust: exact;
+	}
+
+	.notes-row {
+		/*page-break-before: always;*/
+	}
+}

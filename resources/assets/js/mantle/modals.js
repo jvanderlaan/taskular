@@ -38,9 +38,9 @@ var modals = (function() {
 	// Handle events
 	function toggleModal(e) {
 
-		var id = $(this).attr('id'); //just remove this
+		var modalToToggle = "#" + $(this).attr('id');
 
-		DOM.$modal.toggleClass('toggled');
+		$(modalToToggle + '.modal').toggleClass('toggled');
 		if (DOM.$body.height() > $(window).height()) {
 			DOM.$body.toggleClass('modal-active');
 			DOM.$nav.toggleClass('modal-active');
@@ -50,7 +50,10 @@ var modals = (function() {
 	}
 
 	function closeModalButton(e) {
-		DOM.$modal.toggleClass('toggled');
+
+		var modalToClose = "#" + $(this).parents().eq(1).attr('id');
+
+		$(modalToClose + '.modal').toggleClass('toggled');
 		if (DOM.$body.height() > $(window).height()) {
 			DOM.$body.toggleClass('modal-active');
 			DOM.$nav.toggleClass('modal-active');
@@ -63,7 +66,10 @@ var modals = (function() {
 		if (modalActive == false) {
 			return;
 		}
-		DOM.$modal.toggleClass('toggled');
+
+		var modalToClose = "#" + $(this).parents().eq(0).attr('id');
+
+		$(modalToClose + '.modal').toggleClass('toggled');
 		if (DOM.$body.height() > $(window).height()) {
 			DOM.$body.toggleClass('modal-active');
 			DOM.$nav.toggleClass('modal-active');

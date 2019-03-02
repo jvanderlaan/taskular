@@ -29,6 +29,11 @@ main {
 	}
 }
 
+.remember-checkbox {
+	transform: scale(1.2);
+	margin-left: 10px;
+}
+
 .button-primary {
 	@include buttons($white, $green, $green, $green-dark);
 }

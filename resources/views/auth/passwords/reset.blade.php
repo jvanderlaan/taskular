@@ -1,5 +1,27 @@
 @extends('layouts.auth')
 
+@section('title')
+
+    <title>Password Reset | Employee Portal</title>
+
+@endsection
+
+@section('messages')
+
+    @if ($flash = session ('message'))
+        <div class="notification flash success">
+            <span class="tag success">SUCCESS</span>
+            <span class="message">      
+                {{ $flash }}
+            </span>
+            <a class="dismiss-notification" href="#"><i class="material-icons">clear</i></a>
+        </div>
+    @endif
+
+    @include('shards/errors')
+
+@endsection
+
 @section('content')
 
     <div class="login-wrapper">
@@ -7,8 +29,6 @@
             {{ csrf_field() }}
 
             <input type="hidden" name="token" value="{{ $token }}">
-
-            @include('shards/errors')
 
             <div class="form-item{{ $errors->has('email') ? ' has-error' : '' }}">
                 <input class="form-input" id="email" type="email" name="email" placeholder="Email" value="{{ old('email') }}" required autofocus>

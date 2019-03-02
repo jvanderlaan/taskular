@@ -14,21 +14,10 @@ $(".clickable").mousedown(function(event) {
 	 }
 });
 
-// Show message when no events/deadlines present
-if ($('.event').length) {
-	 //at least one element was found
-} else {
-	 //no elements found
-	 $('.no-events').show();
-}
-
-
-if ($('.deadline').length) {
-	 //at least one element was found
-} else {
-	 //no elements found
-	 $('.no-deadlines').show();
-}
+// For empty agenda card, alternative: use forelse in blade file
+$('#agenda-card').filter(function() {
+	return $.trim($(this).text()).length == 0;
+}).append('<p class="text-centered">Nothing on the agenda today. I\'m excited. Are you excited? GET EXCITED!</p>');
 
 // Standardize card heights (put this inside a RESIZE function!)
 var height = $('.static-height').height();

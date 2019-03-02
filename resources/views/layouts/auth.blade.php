@@ -12,7 +12,7 @@
 		
 		<link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}" />
 
-		<title>Employee Portal | Login</title>
+		@yield('title')
 
 		<!-- Fonts & Icons -->
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans|Inconsolata">
@@ -28,6 +28,7 @@
 
 		<main>
 			
+			@yield('messages')
 			@yield('content')
 
 		</main>

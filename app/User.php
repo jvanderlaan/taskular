@@ -26,4 +26,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    //Query Scopes
+    public function scopeIsAll($query)
+    {
+        return $query->all();
+    }
 }

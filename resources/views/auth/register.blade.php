@@ -1,13 +1,33 @@
 @extends('layouts/auth')
 
+@section('title')
+
+    <title>Register | Employee Portal</title>
+
+@endsection
+
+@section('messages')
+
+    @if ($flash = session ('message'))
+        <div class="notification flash success">
+            <span class="tag success">SUCCESS</span>
+            <span class="message">      
+                {{ $flash }}
+            </span>
+            <a class="dismiss-notification" href="#"><i class="material-icons">clear</i></a>
+        </div>
+    @endif
+
+    @include('shards/errors')
+
+@endsection
+
 @section('content')
 
     <div class="login-wrapper">
         <a class="hyperlink auth" href="{{ route('login') }}"><i class="fa fa-angle-left"></i> Back</a>
         <form method="POST" action="{{ route('register') }}">
             {{ csrf_field() }}
-
-            @include('shards/errors')
 
             <div class="form-item{{ $errors->has('name') ? ' has-error' : '' }}">
                 <input class="form-input" id="name" type="text" name="name" placeholder="Name" value="{{ old('name') }}" required autofocus>
@@ -29,7 +49,7 @@
             </div>
 
             <div class="form-item">
-                <p>By creating an account, you agree to the <a href="https://i.imgur.com/6SY6BgW.jpg">Terms & Conditions</a></p>
+                <p>By creating an account, you agree to the <a href="https://i.imgur.com/3t2npON.mp4" target="_blank">Terms & Conditions</a></p>
             </div>
 
             <div class="form-item">

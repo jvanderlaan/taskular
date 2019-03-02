@@ -11,7 +11,9 @@ button {
 .button-secondary,
 .button-tertiary,
 .button-quarternary,
-.button-quinary {
+.button-quinary,
+.button-senary,
+.button-septenary {
 	cursor: pointer;
 	display: inline-flex;
 	align-items: center;
@@ -21,7 +23,7 @@ button {
 	font-size: $size-7;
 	padding-right: 15px;
 	padding-left: 15px;
-	margin-left: 15px;
+	margin-left: 10px;
 	text-align: center;
 	text-decoration: none;
 	white-space: nowrap; 
@@ -41,8 +43,11 @@ button {
 	}
 	&.button-outlined {
 		border-style: solid;
-		border-width: 2px;
+		border-width: 1px;
 		}
+	&.button-floating {
+		box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+	}
 	&.fixed-action-button {
 		position: fixed;
 		bottom: 25px;

@@ -21,4 +21,10 @@ class Comment extends Model
     {
     	return $this->belongsTo(Job::class);
     }
+
+    //Query Scopes
+    public function scopeIsActivity($query)
+    {
+        return $query->orderBy('updated_at', 'desc');
+    }
 }

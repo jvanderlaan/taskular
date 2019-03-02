@@ -117,3 +117,12 @@
 		@content
 	}
 }
+
+//Print Content
+@mixin print {
+	@media print {
+		@page {
+			@content
+		}
+	}
+}

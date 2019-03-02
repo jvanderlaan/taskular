@@ -1,5 +1,27 @@
 @extends ('layouts/master')
 
+@section('title')
+
+	<title>Administrate | Employee Portal</title>
+
+@endsection
+
+@section('messages')
+
+	@if ($flash = session ('message'))
+		<div class="notification flash success">
+			<span class="tag success">SUCCESS</span>
+			<span class="message">		
+				{{ $flash }}
+			</span>
+			<a class="dismiss-notification" href="#"><i class="material-icons">clear</i></a>
+		</div>
+	@endif
+
+	@include('shards/errors')
+
+@endsection
+
 @section('content')
 
 	<div class="row wrappable page-heading">

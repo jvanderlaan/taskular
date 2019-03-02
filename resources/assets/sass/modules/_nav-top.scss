@@ -80,7 +80,7 @@
 			}
 		}
 		@include small {
-			display: block;
+			display: none; //added this to prevent dropdown from showing on small
 			background-color: $navy-lighter;
 			li {
 				width: 100%;

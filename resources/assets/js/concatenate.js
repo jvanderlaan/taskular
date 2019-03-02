@@ -12,6 +12,7 @@
 //@prepros-prepend mantle/modals.js
 //@prepros-prepend mantle/navDetachable.js
 //@prepros-prepend mantle/navSide.js
+//@prepros-prepend mantle/navTop.js
 //@prepros-prepend mantle/notifications.js
 //@prepros-prepend mantle/slider.js
 //@prepros-prepend mantle/tabs.js

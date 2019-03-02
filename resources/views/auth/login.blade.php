@@ -1,5 +1,27 @@
 @extends ('layouts/auth')
 
+@section('title')
+
+	<title>Log In | Employee Portal</title>
+
+@endsection
+
+@section('messages')
+
+	@if ($flash = session ('message'))
+		<div class="notification flash success">
+			<span class="tag success">SUCCESS</span>
+			<span class="message">		
+				{{ $flash }}
+			</span>
+			<a class="dismiss-notification" href="#"><i class="material-icons">clear</i></a>
+		</div>
+	@endif
+
+	@include('shards/errors')
+
+@endsection
+
 @section('content')
 
 	<div class="login-wrapper">
@@ -15,14 +37,12 @@
 			<div class="form-item{{ $errors->has('password') ? ' has-error' : '' }}">
 				<input class="form-input" id="password" type="password" name="password" placeholder="Password" required>
 			</div>
-
-			{{-- <div class="form-item">
+			<div class="form-item margin-bottom-20 text-centered">
 				<label class="check-label">Remember Me?
-					<input class="form-checkbox" type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
+					<input class="form-checkbox remember-checkbox" type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
 				</label>
-			</div> --}}
-
-			<div class="form-item">
+			</div>
+			<div class="form-item sans-margin">
 				<button class="button-primary margin-top-10 fill-x" type="submit" name="submit">Log In</button>
 			</div>
 		</form>

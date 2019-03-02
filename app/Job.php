@@ -22,12 +22,12 @@ class Job extends Model
 
 	public function scopeIsInactive($query)
 	{
-		return $query->where('category', 'Inactive')->orderBy('deadline', 'asc');
+		return $query->where('category', 'Inactive')->orderBy('updated_at', 'desc');
 	}
 
 	public function scopeIsClosed($query)
 	{
-		return $query->where('category', 'Closed')->orderBy('deadline', 'asc');
+		return $query->where('category', 'Closed')->orderBy('updated_at', 'desc');
 	}
 
 	public function scopeIsNotClosed($query)
@@ -37,7 +37,12 @@ class Job extends Model
 
 	public function scopeIsActivity($query)
 	{
-		return $query->take(8)->orderBy('updated_at', 'desc');
+		return $query->take(9)->orderBy('updated_at', 'desc');
+	}
+
+	public function scopeIsLatest($query)
+	{
+		return $query->take(1)->latest();
 	}
 
 	//User relationship
@@ -50,6 +55,12 @@ class Job extends Model
 	public function comments()
 	{
 		return $this->hasMany(Comment::class)->orderBy('updated_at', 'desc');
+	}
+
+	//Job relationship
+	public function detail()
+	{
+		return $this->hasOne(Detail::class);
 	}
 
 }

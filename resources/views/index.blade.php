@@ -1,5 +1,27 @@
 @extends ('layouts/master')
 
+@section('title')
+
+	<title>Summary | Employee Portal</title>
+
+@endsection
+
+@section('messages')
+
+	@if ($flash = session ('message'))
+		<div class="notification flash success">
+			<span class="tag success">SUCCESS</span>
+			<span class="message">		
+				{{ $flash }}
+			</span>
+			<a class="dismiss-notification" href="#"><i class="material-icons">clear</i></a>
+		</div>
+	@endif
+
+	@include('shards/errors')
+
+@endsection
+
 @section('content')
 
 	<div class="row wrappable page-heading">
@@ -24,7 +46,7 @@
 									<div class="card-header-title">Today</div>
 								</div>
 							</div>
-							<div class="card-content sans-padding card-content-unused overflow-y-auto">
+							<div id="agenda-card" class="card-content sans-padding card-content-unused overflow-y-auto">
 
 								@foreach ($deadlines as $deadline)
 
@@ -95,24 +117,35 @@
 								</div>
 							</div>
 							<div class="card-content sans-padding">
-
 								@foreach ($activities as $activity)
-
-								<div class="activity clickable" data-href="/jobs/{{ $activity->id }}">
-									<img class="circle" id="user-avatar" src="{{ asset('img/user-avatar.jpg') }}" alt="User Avatar">
-									<div class="activity-items">
-										<div class="activity-user">
-											<span class="light-copy weight-bold">{{ $activity->user->name }} </span>
-											<span class="light-copy small-copy"> {{ $activity->updated_at->diffForHumans() }}</span>
+									@if (!isset($activity->job))
+										<div class="activity clickable" data-href="/jobs/{{ $activity->id }}">
+											<img class="circle" id="user-avatar" src="storage/{{ $activity->user->image_path }}" alt="User Avatar">
+											<div class="activity-items">
+												<div class="activity-user">
+													<span class="light-copy weight-bold">{{ $activity->user->name }} </span>
+													<span class="light-copy small-copy"> {{ $activity->updated_at->diffForHumans() }}</span>
+												</div>
+												<div class="activity-updated">
+													<span class="small-copy">Updated the <span class="italicized dark-copy"> {{ $activity->customer }} {{ $activity->description }}</span> job.</span>
+												</div>
+											</div>
 										</div>
-										<div class="activity-updated">
-											<span class="small-copy">Updated the <span class="italicized dark-copy"> {{ $activity->customer }} {{ $activity->description }}</span> job.</span>
+									@else 										
+										<div class="activity clickable" data-href="/jobs/{{ $activity->job->id }}">
+											<img class="circle" id="user-avatar" src="storage/{{ $activity->user->image_path }}" alt="User Avatar">
+											<div class="activity-items">
+												<div class="activity-user">
+													<span class="light-copy weight-bold">{{ $activity->user->name }} </span>
+													<span class="light-copy small-copy"> {{ $activity->updated_at->diffForHumans() }}</span>
+												</div>
+												<div class="activity-updated">
+													<span class="small-copy">Commented on the <span class="italicized dark-copy"> {{ $activity->job->customer }} {{ $activity->job->description }}</span> job.</span>
+												</div>
+											</div>
 										</div>
-									</div>
-								</div>
-
+									@endif
 								@endforeach 
-
 							</div>
 						</div>
 					</div>
@@ -185,14 +218,28 @@
 										</div>
 										<div class="stat">
 											<div class="stat-container">
-												<span class="stat-label">Billing</span>
-												<span class="stat-value">{{ $jobsCounted[0]->billing }}</span>
-												<progress class="stat-progress" value="{{ $jobsCounted[0]->billing }}" max="{{ $jobsNotClosedTotal }}"></progress>
+												<span class="stat-label">Delivered</span>
+												<span class="stat-value">{{ $jobsCounted[0]->delivered }}</span>
+												<progress class="stat-progress" value="{{ $jobsCounted[0]->delivered }}" max="{{ $jobsNotClosedTotal }}"></progress>
+											</div>
+										</div>
+										<div class="stat">
+											<div class="stat-container">
+												<span class="stat-label">Approved</span>
+												<span class="stat-value">{{ $jobsCounted[0]->approved }}</span>
+												<progress class="stat-progress" value="{{ $jobsCounted[0]->approved }}" max="{{ $jobsNotClosedTotal }}"></progress>
+											</div>
+										</div>
+										<div class="stat">
+											<div class="stat-container">
+												<span class="stat-label">Billed</span>
+												<span class="stat-value">{{ $jobsCounted[0]->billed }}</span>
+												<progress class="stat-progress" value="{{ $jobsCounted[0]->billed }}" max="{{ $jobsNotClosedTotal }}"></progress>
 											</div>
 										</div>
 									</div>
 								</div>
-									<div class="stat-group">
+								<div class="stat-group">
 									<div class="icon-column">
 										<div class="stat-icon">
 											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path class="stat-svg" d="M1 1h18v2H1V1zm0 8h18v2H1V9zm0 8h18v2H1v-2zM1 5h12v2H1V5zm0 8h12v2H1v-2z"/></svg>
@@ -205,22 +252,22 @@
 										<div class="stat">
 											<div class="stat-container">
 												<span class="stat-label">Prediction</span>
-												<span class="stat-value">{{ $jobsCounted[0]->prediction }}</span>
-												<progress class="stat-progress" value="{{ $jobsCounted[0]->prediction }}" max="{{ $jobsNotClosedTotal }}"></progress>
+												<span class="stat-value">{{ $jobsCounted[0]->prediction_survey }}</span>
+												<progress class="stat-progress" value="{{ $jobsCounted[0]->prediction_survey }}" max="{{ $jobsNotClosedTotal }}"></progress>
 											</div>
 										</div>
 										<div class="stat">
 											<div class="stat-container">
 												<span class="stat-label">Survey</span>
-												<span class="stat-value">{{ $jobsCounted[0]->survey }}</span>
-												<progress class="stat-progress" value="{{ $jobsCounted[0]->survey }}" max="{{ $jobsNotClosedTotal }}"></progress>
+												<span class="stat-value">{{ $jobsCounted[0]->site_survey }}</span>
+												<progress class="stat-progress" value="{{ $jobsCounted[0]->site_survey }}" max="{{ $jobsNotClosedTotal }}"></progress>
 											</div>
 										</div>
 										<div class="stat">
 											<div class="stat-container">
 												<span class="stat-label">Validation</span>
-												<span class="stat-value">{{ $jobsCounted[0]->validation }}</span>
-												<progress class="stat-progress" value="{{ $jobsCounted[0]->validation }}" max="{{ $jobsNotClosedTotal }}"></progress>
+												<span class="stat-value">{{ $jobsCounted[0]->validation_survey }}</span>
+												<progress class="stat-progress" value="{{ $jobsCounted[0]->validation_survey }}" max="{{ $jobsNotClosedTotal }}"></progress>
 											</div>
 										</div>
 										<div class="stat">
@@ -259,5 +306,6 @@
 @section('scripts')
 
 	@include('shards/summary')
+	@include('shards/random')
 
 @endsection

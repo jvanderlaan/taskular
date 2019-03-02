@@ -13,7 +13,7 @@
 	right: 0;
 	bottom: 0;
 	left: 0;
-	z-index: 10001;
+	z-index: 100000;
 	padding-left: 240px;
 	&.toggled {
 		display: flex;
@@ -38,18 +38,21 @@
 	margin: 0;
 	position: relative;
 	@include small {
-		width: 100%;
+		width: 90%;
 	}
 	@include medium {
-		width: 80%;                 
+		width: 90%;                 
 	}
 	@include large {
+		width: 70%;
+	}
+	@include wide {
 		width: 50%;
 	}
 }
 
 .modal-content {
-	// background-color: $white;
+	background-color: $white;
 	// border-bottom: 20px solid $white;
 	// padding: 20px;
 	margin: 0;
@@ -57,8 +60,8 @@
 	overflow: auto;
 	border-radius: 2px;
 	@include small {
-		margin: 0 20px;
-		max-height: 60vh;
+		margin: 0 5px;
+		max-height: 80vh;
 	}
 }
 

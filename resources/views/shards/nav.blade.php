@@ -5,15 +5,14 @@
 			<div class="dropdown">
 				<div class="user-widget dropdown-toggle" data-id="user-widget-dropdown">
 					<div class="user-widget-item" id="user-avatar-container">
-						<img class="circle" id="user-avatar" src="{{ asset('img/user-avatar.jpg') }}" alt="User Avatar">
+						<img class="circle" id="user-avatar" src="{{ asset('storage/' . Auth::user()->image_path . '') }}" alt="User Avatar">
 					</div>
 					<div class="user-widget-item">
 						<span id="user-name">{{ Auth::user()->name }}</span>
-						{{-- <span id="user-role">User</span> --}}
-						<span id="user-role">Administrator</span>
+						<span id="user-role">{{ Auth::user()->role }}</span>
 					</div>
 					<div class="user-widget-item">
-						<span><i class="fa fa-cogs"></i></span>
+						<span class="big-copy"><i class="fa fa-cog"></i></span>
 					</div>
 				</div>
 				<div class="dropdown-content" id="user-widget-dropdown">
